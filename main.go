@@ -16,12 +16,6 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
 		c.String(200, "Hello, World!")
 	})
-   
-    router.GET("/hello", func(c *gin.Context) {
-       c.String(200, "Hello, World!")
-    })
 
 	router.Run(":" + port)
-
-    r := gin.Default()
 }
