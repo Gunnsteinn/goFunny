@@ -4,13 +4,24 @@ package main
 import "github.com/gin-gonic/gin"
 
 func main() {
+    port := os.Getenv("PORT")
 
-    r := gin.Default()
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 
-    r.GET("/hello", func(c *gin.Context) {
+	router := gin.New()
+	router.Use(gin.Logger())
+
+	router.GET("/", func(c *gin.Context) {
+		c.String(200, "Hello, World!")
+	})
+   
+    router.GET("/hello", func(c *gin.Context) {
        c.String(200, "Hello, World!")
     })
 
-    r.Run(":3000")
+	router.Run(":" + port)
 
+    r := gin.Default()
 }
