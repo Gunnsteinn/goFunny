@@ -1,29 +1,16 @@
+
 package main
 
-import (
-	"log"
-	"net/http"
-	"os"
-
-	"github.com/gin-gonic/gin"
-	_ "github.com/heroku/x/hmetrics/onload"
-)
+import "github.com/gin-gonic/gin"
 
 func main() {
-	port := os.Getenv("PORT")
 
-	if port == "" {
-		log.Fatal("$PORT must be set")
-	}
+    r := gin.Default()
 
-	router := gin.New()
-	router.Use(gin.Logger())
-	router.LoadHTMLGlob("templates/*.tmpl.html")
-	router.Static("/static", "static")
+    r.GET("/hello", func(c *gin.Context) {
+       c.String(200, "Hello, World!")
+    })
 
-	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl.html", nil)
-	})
+    r.Run(":3000")
 
-	router.Run(":" + port)
 }
