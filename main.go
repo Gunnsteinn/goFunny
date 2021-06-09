@@ -1,21 +1,24 @@
-
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"io"
+	"log"
+	"net/http"
+	"os"
+)
 
+// Hello World API
 func main() {
-    port := os.Getenv("PORT")
-
+	port := os.Getenv("PORT")
 	if port == "" {
-		log.Fatal("$PORT must be set")
+		port = "8000" //localhost
 	}
 
-	router := gin.New()
-	router.Use(gin.Logger())
+	helloHandler := func(w http.ResponseWriter, r *http.Request) {
+		io.WriteString(w, "Hello, World!")
+	}
 
-	router.GET("/", func(c *gin.Context) {
-		c.String(200, "Hello, World!")
-	})
+	http.HandleFunc("/hello", helloHandler)
 
-	router.Run(":" + port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
