@@ -15,10 +15,10 @@ func main() {
 	}
 
 	helloHandler := func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Colgate de esta pancho en Go!")
+		io.WriteString(w, "Colgate de esta TanKO!")
 	}
 
-	http.HandleFunc("/Pancho", helloHandler)
+	http.HandleFunc("/TanKO", helloHandler)
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
