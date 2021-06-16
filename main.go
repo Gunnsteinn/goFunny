@@ -21,7 +21,7 @@ func main() {
 	  //router.Use(static.Serve("/", static.LocalFile("./views", true)))
 
 	  // Setup route group for the API
-	  api := r.Group("/api")
+	  api := router.Group("/api")
 
 	  api.GET("/ping", func(c *gin.Context) {
 	     c.JSON(200, gin.H{
@@ -30,14 +30,14 @@ func main() {
 	  })
 	
 	
-	  api := router.Group("/api")
-	  {
-	    api.GET("/", func(c *gin.Context) {
-	      c.JSON(http.StatusOK, gin.H {
-		"message": "pong",
-	      })
-	    })
-	  }
+	  //api := router.Group("/api")
+	  //{
+	    //api.GET("/", func(c *gin.Context) {
+	      //c.JSON(http.StatusOK, gin.H {
+		//"message": "pong",
+	      //})
+	    //})
+	  //}
 	
 	  // Start and run the server
   	router.Run()
