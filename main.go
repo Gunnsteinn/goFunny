@@ -1,12 +1,12 @@
 package main
 
-import (
+import (api
 	//"io"
 	//"log"
 	"net/http"
 	//"os"
   
-  	"github.com/gin-gonic/contrib/static"
+  	//"github.com/gin-gonic/contrib/static"
   	"github.com/gin-gonic/gin"
 )
 
