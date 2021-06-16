@@ -12,7 +12,9 @@ import (
 
 // Hello World API
 func main() {
-	// Set the router as the default one shipped with Gin
+	  port := os.Getenv("PORT")
+	
+	  // Set the router as the default one shipped with Gin
 	  router := gin.Default()
 
 	  // Serve frontend static files
@@ -29,7 +31,7 @@ func main() {
 	  }
 	
 	  // Start and run the server
-  	router.Run(":3000")
+  	router.Run(":port")
 	
 	//port := os.Getenv("PORT")
 	//if port == "" {
